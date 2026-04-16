@@ -1,0 +1,75 @@
+// app/api/search/route.js - Local search API for Filipino American Voices
+import { NextResponse } from 'next/server';
+import { createClient } from '@supabase/supabase-js';
+
+export const dynamic = 'force-dynamic';
+
+const supabase = createClient(
+  process.env.SUPABASE_URL,
+  process.env.SUPABASE_ANON_KEY
+);
+
+export async function GET(request) {
+  try {
+    const { searchParams } = new URL(request.url);
+    const query = searchParams.get('q') || '';
+    const site = searchParams.get('site') || 'tagalog';
+    const limit = parseInt(searchParams.get('limit') || '20');
+
+    if (!query) {
+      return NextResponse.json({ success: true, results: [] });
+    }
+
+    // Search published articles - use tagalog_translated_title and translations (raw JSON text search)
+    const { data: articles } = await supabase
+      .from('articles')
+      .select('*, scraped_date, published_date, image_url, relevance_score')
+      .eq('status', 'published')
+      .or(`original_title.ilike.%${query}%,tagalog_translated_title.ilike.%${query}%,translations.ilike.%${query}%`)
+      .not('tagalog_translated_title', 'is', null) // Only return articles that have Filipino/Tagalog translations
+      .order('scraped_date', { ascending: false })
+      .order('relevance_score', { ascending: false, nullsLast: true })
+      .limit(limit);
+
+    const results = articles?.map(article => {
+      // Get the appropriate title and summary based on site language
+      const translatedTitles = typeof article.translated_titles === 'string'
+        ? JSON.parse(article.translated_titles || '{}')
+        : article.translated_titles || {};
+
+      const translations = typeof article.translations === 'string'
+        ? JSON.parse(article.translations || '{}')
+        : article.translations || {};
+
+      const displayTitle = translatedTitles.tagalog
+        || article.tagalog_translated_title
+        || article.display_title || article.original_title;
+
+      const displaySummary = translations.tagalog
+        || article.ai_summary || '';
+
+      return {
+        id: article.id,
+        originalTitle: article.original_title,
+        displayTitle: displayTitle,
+        translatedTitles: translatedTitles,
+        translations: translations,
+        topic: article.topic,
+        source: article.source,
+        publishedDate: article.scraped_date,
+        matchedSummary: displaySummary.substring(0, 200),
+        imageUrl: article.image_url,
+        relevanceScore: article.relevance_score
+      };
+    }) || [];
+
+    return NextResponse.json({
+      success: true,
+      results,
+      total_results: results.length
+    });
+
+  } catch (error) {
+    return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+  }
+}
