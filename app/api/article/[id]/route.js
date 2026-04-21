@@ -110,10 +110,7 @@ export async function GET(request, { params }) {
           english_audio_generated_at,
           tagalog_audio_url,
           tagalog_audio_duration,
-          tagalog_audio_generated_at,
-          tagalog_translation,
-          tagalog_translated_title,
-          tagalog_social_caption
+          tagalog_audio_generated_at
         `)
         .eq('id', queryId)
         .eq('status', 'published')
@@ -134,24 +131,10 @@ export async function GET(request, { params }) {
         return NextResponse.json({ error: 'Article not found' }, { status: 404 });
       }
 
-      // Get base translations from JSONB and merge with Filipino/Tagalog dedicated columns
-      const baseTranslations = parseJsonField(data.translations) || { chinese: null, korean: null, tagalog: null };
-      const baseTranslatedTitles = parseJsonField(data.translated_titles) || { chinese: null, korean: null, tagalog: null };
-      const baseSocialCaptions = parseJsonField(data.social_captions) || { chinese: null, korean: null, tagalog: null };
-
-      // Filipino/Tagalog uses dedicated columns - override JSONB with dedicated column values if they exist
-      const translations = {
-        ...baseTranslations,
-        tagalog: data.tagalog_translation || baseTranslations.tagalog
-      };
-      const translatedTitles = {
-        ...baseTranslatedTitles,
-        tagalog: data.tagalog_translated_title || baseTranslatedTitles.tagalog
-      };
-      const socialCaptions = {
-        ...baseSocialCaptions,
-        tagalog: data.tagalog_social_caption || baseSocialCaptions.tagalog
-      };
+      // Get translations from JSONB fields (Tagalog uses JSONB, no dedicated columns)
+      const translations = parseJsonField(data.translations) || { chinese: null, korean: null, tagalog: null };
+      const translatedTitles = parseJsonField(data.translated_titles) || { chinese: null, korean: null, tagalog: null };
+      const socialCaptions = parseJsonField(data.social_captions) || { chinese: null, korean: null, tagalog: null };
 
       // Transform to frontend format
       article = {

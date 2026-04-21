@@ -64,9 +64,7 @@ export async function GET(request) {
           tagalog_audio_url,
           tagalog_audio_duration,
           tagalog_audio_generated_at,
-          tagalog_translation,
-          tagalog_translated_title,
-          tagalog_social_caption
+          social_captions
         `)
         .eq('status', 'published');
 
@@ -107,24 +105,10 @@ export async function GET(request) {
 
       // Transform to frontend format
       articles = data.map(article => {
-        // Get base translations from JSONB fields
-        const baseTranslations = parseJsonField(article.translations) || { chinese: null, korean: null, tagalog: null };
-        const baseTranslatedTitles = parseJsonField(article.translated_titles) || { chinese: null, korean: null, tagalog: null };
-        const baseSocialCaptions = parseJsonField(article.social_caption) || { chinese: null, korean: null, tagalog: null };
-
-        // Filipino/Tagalog uses dedicated columns - override JSONB with dedicated column values if they exist
-        const translations = {
-          ...baseTranslations,
-          tagalog: article.tagalog_translation || baseTranslations.tagalog
-        };
-        const translatedTitles = {
-          ...baseTranslatedTitles,
-          tagalog: article.tagalog_translated_title || baseTranslatedTitles.tagalog
-        };
-        const socialCaptions = {
-          ...baseSocialCaptions,
-          tagalog: article.tagalog_social_caption || baseSocialCaptions.tagalog
-        };
+        // Get translations from JSONB fields (Tagalog uses JSONB, no dedicated columns)
+        const translations = parseJsonField(article.translations) || { chinese: null, korean: null, tagalog: null };
+        const translatedTitles = parseJsonField(article.translated_titles) || { chinese: null, korean: null, tagalog: null };
+        const socialCaptions = parseJsonField(article.social_captions) || { chinese: null, korean: null, tagalog: null };
 
         return {
           id: article.id,

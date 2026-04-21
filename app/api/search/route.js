@@ -20,13 +20,13 @@ export async function GET(request) {
       return NextResponse.json({ success: true, results: [] });
     }
 
-    // Search published articles - use tagalog_translated_title and translations (raw JSON text search)
+    // Search published articles - use translated_titles and translations JSONB text search
     const { data: articles } = await supabase
       .from('articles')
       .select('*, scraped_date, published_date, image_url, relevance_score')
       .eq('status', 'published')
-      .or(`original_title.ilike.%${query}%,tagalog_translated_title.ilike.%${query}%,translations.ilike.%${query}%`)
-      .not('tagalog_translated_title', 'is', null) // Only return articles that have Filipino/Tagalog translations
+      .or(`original_title.ilike.%${query}%,translated_titles.ilike.%${query}%,translations.ilike.%${query}%`)
+      .like('translations', '%tagalog%') // Only return articles that have Tagalog translations
       .order('scraped_date', { ascending: false })
       .order('relevance_score', { ascending: false, nullsLast: true })
       .limit(limit);
@@ -42,7 +42,6 @@ export async function GET(request) {
         : article.translations || {};
 
       const displayTitle = translatedTitles.tagalog
-        || article.tagalog_translated_title
         || article.display_title || article.original_title;
 
       const displaySummary = translations.tagalog
