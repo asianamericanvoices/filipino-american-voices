@@ -4,9 +4,11 @@
 import Script from 'next/script';
 
 import React, { useState, useEffect } from 'react';
-import { Clock, ExternalLink, ChevronRight, Globe, TrendingUp, Building2, GraduationCap, Plane, Palette, Newspaper, Trophy, Stethoscope } from 'lucide-react';
+import { Clock, ExternalLink, ChevronRight, Globe, TrendingUp, Building2, GraduationCap, Plane, Palette, Newspaper, Trophy, Stethoscope, Vote } from 'lucide-react';
 import Link from 'next/link';
 import SearchBar from '../../components/SearchBar';
+import LocationPopup from '../../components/LocationPopup';
+import ManualVotingInfoPopup from '../../components/ManualVotingInfoPopup';
 
 export default function AlaskaSenate2026() {
   const [articles, setArticles] = useState([]);
@@ -15,6 +17,7 @@ export default function AlaskaSenate2026() {
   const [newsletterEmail, setNewsletterEmail] = useState('');
   const [newsletterStatus, setNewsletterStatus] = useState('');
   const [newsletterMessage, setNewsletterMessage] = useState('');
+  const [showManualPopup, setShowManualPopup] = useState(false);
 
   const EVENT_NAME = 'Alaska Senate 2026';
   const EVENT_TITLE = 'Halalan sa Senado ng Alaska 2026';
@@ -160,6 +163,15 @@ export default function AlaskaSenate2026() {
 
   return (
     <div className="min-h-screen bg-white">
+      <LocationPopup state="AK" eventType="alaska-senate-2026" />
+
+      <ManualVotingInfoPopup
+        state="AK"
+        eventType="ak-senate-2026"
+        isOpen={showManualPopup}
+        onClose={() => setShowManualPopup(false)}
+      />
+
       {/* Header */}
       <header className="border-b border-gray-200 bg-white sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-6">
@@ -280,6 +292,44 @@ export default function AlaskaSenate2026() {
               })}
             </div>
           </div>
+        </div>
+      </div>
+
+
+      {/* Voting Information Button */}
+      <div className="bg-gradient-to-r from-purple-50 to-yellow-50 py-4 border-b border-purple-200">
+        <div className="max-w-7xl mx-auto px-6 text-center">
+          <button
+            onClick={() => {
+              if (typeof window !== 'undefined' && window.gtag) {
+                window.gtag('event', 'voting_info_button_click', {
+                  event_category: 'Engagement',
+                  event_label: 'ak-senate-2026',
+                  state: 'AK'
+                });
+              }
+              fetch('/api/analytics/track', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  event_type: 'voting_info_button_click',
+                  metadata: {
+                    state: 'AK',
+                    event_type: 'ak-senate-2026',
+                    button_location: 'event_page_banner',
+                    date: new Date().toISOString().split('T')[0],
+                    timestamp: new Date().toISOString()
+                  }
+                })
+              });
+              setShowManualPopup(true);
+            }}
+            className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-full shadow-lg transition-all transform hover:scale-105"
+          >
+            <Vote className="w-5 h-5" />
+            <span className="text-lg">🗳️ Impormasyon sa pagboto ng Alaska</span>
+          </button>
+          <p className="mt-2 text-sm text-gray-600">Impormasyon sa pagboto para sa mga residente ng Alaska • Ranked choice voting • Pangkalahatan Nobyembre 3</p>
         </div>
       </div>
 
