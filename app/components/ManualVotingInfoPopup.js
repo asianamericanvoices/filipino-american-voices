@@ -108,7 +108,7 @@ export default function ManualVotingInfoPopup({ state, eventType, isOpen, onClos
             ]
           }
         ],
-        footerMessage: 'Ang Ika-1 Distrito ng Pennsylvania ay isa sa pinakamahalagang swing district sa US. Boto ninyo ang nagdedesisyon!'
+        footerMessage: 'Ang Ika-1 Distrito ng Pennsylvania ay isa sa pinakaminamatyagang swing district sa US. Bumoto sa primarya ng Mayo 19 upang magpasya kung sino ang kakatawan sa inyong komunidad!'
       },
       'AK': {
         title: 'Mga botante ng Alaska',
