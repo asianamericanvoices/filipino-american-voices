@@ -471,6 +471,46 @@ export default function FilipinoAmericanVoices() {
           </div>
         </div>
 
+        {/* Prominent Event Hub Bar - Part of Sticky Header */}
+        <div className="border-t border-gray-200 py-3 bg-gradient-to-r from-emerald-50 via-yellow-50 to-teal-50">
+          <div className="max-w-7xl mx-auto px-6">
+            {/* Desktop */}
+            <div className="hidden md:flex items-center justify-center gap-3 flex-wrap">
+              <span className="text-sm font-bold text-gray-700">🗳️ Mahahalagang Halalan:</span>
+              <Link
+                href="/event/georgia-supreme-court-2026"
+                className="inline-flex items-center px-5 py-2.5 rounded-full text-sm font-medium transition-all transform hover:scale-105 bg-green-600 text-white hover:bg-green-700 shadow-lg"
+              >
+                <span>⚖️ Kataas-taasang Hukuman ng GA 2026</span>
+              </Link>
+              <Link
+                href="/event/pennsylvania-1st-district-2026"
+                className="inline-flex items-center px-5 py-2.5 rounded-full text-sm font-medium transition-all transform hover:scale-105 bg-teal-600 text-white hover:bg-teal-700 shadow-lg"
+              >
+                <span>🏛️ Ika-1 Distrito ng PA Primarya 2026</span>
+              </Link>
+            </div>
+
+            {/* Mobile */}
+            <div className="md:hidden flex flex-col items-center space-y-2">
+              <span className="text-sm font-bold text-gray-700 mb-1">🗳️ Mahahalagang Halalan</span>
+              <div className="flex flex-col items-center space-y-2 w-full">
+                <Link
+                  href="/event/georgia-supreme-court-2026"
+                  className="inline-flex items-center justify-center px-4 py-2 rounded-full text-xs font-medium transition-all transform hover:scale-105 bg-green-600 text-white hover:bg-green-700 shadow-lg w-full max-w-xs"
+                >
+                  <span>⚖️ Kataas-taasang Hukuman ng GA 2026</span>
+                </Link>
+                <Link
+                  href="/event/pennsylvania-1st-district-2026"
+                  className="inline-flex items-center justify-center px-4 py-2 rounded-full text-xs font-medium transition-all transform hover:scale-105 bg-teal-600 text-white hover:bg-teal-700 shadow-lg w-full max-w-xs"
+                >
+                  <span>🏛️ Ika-1 Distrito ng PA Primarya 2026</span>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
       </header>
 
       {/* Breaking News Ticker - Now Dynamic */}
