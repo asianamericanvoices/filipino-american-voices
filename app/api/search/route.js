@@ -13,46 +13,54 @@ export async function GET(request) {
   try {
     const { searchParams } = new URL(request.url);
     const query = searchParams.get('q') || '';
-    const site = searchParams.get('site') || 'tagalog';
     const limit = parseInt(searchParams.get('limit') || '20');
 
     if (!query) {
       return NextResponse.json({ success: true, results: [] });
     }
 
-    // Search published articles - use translated_titles and translations JSONB text search
-    const { data: articles } = await supabase
+    // Escape % and _ to prevent SQL LIKE wildcard injection
+    const safeQuery = query.replace(/[%_]/g, ch => '\\' + ch);
+
+    const { data: articles, error } = await supabase
       .from('articles')
       .select('*, scraped_date, published_date, image_url, relevance_score')
       .eq('status', 'published')
-      .or(`original_title.ilike.%${query}%,translated_titles.ilike.%${query}%,translations.ilike.%${query}%`)
-      .like('translations', '%tagalog%') // Only return articles that have Tagalog translations
+      // Match either English title or Tagalog title/content search columns
+      .or(`original_title.ilike.%${safeQuery}%,tagalog_title_search.ilike.%${safeQuery}%,tagalog_content_search.ilike.%${safeQuery}%`)
+      // Require some Tagalog signal (title_search populated OR has audio = was translated)
+      .or('tagalog_title_search.not.is.null,tagalog_audio_url.not.is.null')
       .order('scraped_date', { ascending: false })
       .order('relevance_score', { ascending: false, nullsLast: true })
       .limit(limit);
 
-    const results = articles?.map(article => {
-      // Get the appropriate title and summary based on site language
-      const translatedTitles = typeof article.translated_titles === 'string'
-        ? JSON.parse(article.translated_titles || '{}')
-        : article.translated_titles || {};
+    if (error) {
+      console.error('FAV search error:', error);
+      return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+    }
 
-      const translations = typeof article.translations === 'string'
-        ? JSON.parse(article.translations || '{}')
-        : article.translations || {};
+    const results = (articles || []).map(article => {
+      const translatedTitles = safeJsonParse(article.translated_titles);
+      const translations = safeJsonParse(article.translations);
 
-      const displayTitle = translatedTitles.tagalog
-        || article.display_title || article.original_title;
+      const displayTitle =
+        article.tagalog_title_search
+        || translatedTitles.tagalog
+        || article.display_title
+        || article.original_title;
 
-      const displaySummary = translations.tagalog
-        || article.ai_summary || '';
+      const displaySummary =
+        article.tagalog_content_search
+        || translations.tagalog
+        || article.ai_summary
+        || '';
 
       return {
         id: article.id,
         originalTitle: article.original_title,
-        displayTitle: displayTitle,
-        translatedTitles: translatedTitles,
-        translations: translations,
+        displayTitle,
+        translatedTitles,
+        translations,
         topic: article.topic,
         source: article.source,
         publishedDate: article.scraped_date,
@@ -60,7 +68,7 @@ export async function GET(request) {
         imageUrl: article.image_url,
         relevanceScore: article.relevance_score
       };
-    }) || [];
+    });
 
     return NextResponse.json({
       success: true,
@@ -69,6 +77,22 @@ export async function GET(request) {
     });
 
   } catch (error) {
+    console.error('FAV search route error:', error);
     return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+  }
+}
+
+// Handle the AAVM legacy double-encoded JSON in translations TEXT columns
+function safeJsonParse(val) {
+  if (!val) return {};
+  if (typeof val === 'object') return val;
+  try {
+    let parsed = JSON.parse(val);
+    if (typeof parsed === 'string') {
+      try { parsed = JSON.parse(parsed); } catch { return {}; }
+    }
+    return (parsed && typeof parsed === 'object') ? parsed : {};
+  } catch {
+    return {};
   }
 }
