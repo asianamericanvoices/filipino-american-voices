@@ -192,7 +192,45 @@ export default function ManualVotingInfoPopup({ state, eventType, isOpen, onClos
           }
         ],
         footerMessage: 'Ang halalan sa North Carolina (Senado, Kataas-taasang Hukuman, Lupon ng Halalan) ay nakakaapekto sa patakaran ng estado at hustisya. Mahalaga ang inyong boto!'
-      }
+      },
+      'IA': {
+        title: 'Mga botante ng Iowa',
+        subtitle: 'Impormasyon sa Halalan: Senado ng Iowa 2026 (Pangkalahatang Halalan Nob 3)',
+        resources: [
+          {
+            icon: Vote,
+            title: 'Tingnan ang voter registration',
+            description: 'Tingnan ang inyong status ng pagpapatala',
+            link: 'https://sos.iowa.gov/elections/voterreg/regtovote/search.aspx',
+            linkText: 'Pumunta sa Iowa Voter Registration'
+          },
+          {
+            icon: FileText,
+            title: 'Mag-apply ng absentee ballot',
+            description: 'Mag-apply ng pagboto sa pamamagitan ng koreo',
+            link: 'https://sos.iowa.gov/elections/absentee/',
+            linkText: 'Impormasyon sa absentee ballot'
+          },
+          {
+            icon: MapPin,
+            title: 'Hanapin ang inyong polling place',
+            description: 'Hanapin ang pinakamalapit na presinto',
+            link: 'https://sos.iowa.gov/elections/voterreg/PollPlace/search.aspx',
+            linkText: 'Tingnan ang lokasyon ng presinto'
+          },
+          {
+            icon: Calendar,
+            title: 'Mahahalagang petsa',
+            description: 'Araw ng Halalan: Nobyembre 3, 2026',
+            dates: [
+              'Voter registration deadline: Oktubre 24, 2026',
+              'Maagang pagboto: Oktubre 14 - Nobyembre 3, 2026',
+              'Huling araw mag-apply ng absentee ballot: Oktubre 19, 2026'
+            ]
+          }
+        ],
+        footerMessage: 'Bakante ang upuan ng Senado ng Iowa pagkatapos magretiro ni Sen. Ernst. Bumoto sa pangkalahatang halalan ng Nobyembre 3 upang magpasya kung sino ang kakatawan sa mga Iowan!'
+      },
     };
 
     return content[state] || null;
