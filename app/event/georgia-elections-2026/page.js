@@ -1,4 +1,4 @@
-// Georgia Supreme Court 2026 Event Page - Filipino American Voices
+// Georgia Elections 2026 Event Page - Filipino American Voices
 'use client';
 
 import Script from 'next/script';
@@ -10,7 +10,7 @@ import SearchBar from '../../components/SearchBar';
 import LocationPopup from '../../components/LocationPopup';
 import ManualVotingInfoPopup from '../../components/ManualVotingInfoPopup';
 
-export default function GeorgiaSupremeCourt2026() {
+export default function GeorgiaElections2026() {
   const [articles, setArticles] = useState([]);
   const [trendingArticles, setTrendingArticles] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -19,8 +19,8 @@ export default function GeorgiaSupremeCourt2026() {
   const [newsletterMessage, setNewsletterMessage] = useState('');
   const [showManualPopup, setShowManualPopup] = useState(false);
 
-  const EVENT_NAME = 'Georgia Supreme Court 2026';
-  const EVENT_TITLE = '[Naka-archive] Halalan sa Kataas-taasang Hukuman ng Georgia 2026';
+  const EVENT_NAME = 'Georgia Elections 2026';
+  const EVENT_TITLE = 'Halalan sa Georgia 2026';
   const EVENT_COLOR = 'bg-green-100 text-green-800 border-green-300';
 
   const categories = [
@@ -163,11 +163,11 @@ export default function GeorgiaSupremeCourt2026() {
 
   return (
     <div className="min-h-screen bg-white">
-      <LocationPopup state="GA" eventType="georgia-supreme-court-2026" />
+      <LocationPopup state="GA" eventType="georgia-elections-2026" />
 
       <ManualVotingInfoPopup
         state="GA"
-        eventType="ga-sc-2026"
+        eventType="ga-elections-2026"
         isOpen={showManualPopup}
         onClose={() => setShowManualPopup(false)}
       />
@@ -203,10 +203,10 @@ export default function GeorgiaSupremeCourt2026() {
               <div className="hidden md:flex items-center justify-center gap-3 flex-wrap">
                 <span className="text-sm font-bold text-gray-700">🗳️ Mahahalagang Halalan:</span>
                 <Link
-                  href="/event/georgia-supreme-court-2026"
+                  href="/event/georgia-elections-2026"
                   className="inline-flex items-center px-5 py-2.5 rounded-full text-sm font-medium transition-all transform hover:scale-105 bg-green-600 text-white hover:bg-green-700 shadow-lg"
                 >
-                  <span>⚖️ Kataas-taasang Hukuman ng GA 2026</span>
+                  <span>🗳️ Halalan sa Georgia 2026</span>
                 </Link>
               </div>
 
@@ -215,10 +215,10 @@ export default function GeorgiaSupremeCourt2026() {
                 <span className="text-sm font-bold text-gray-700 mb-1">🗳️ Mahahalagang Halalan</span>
                 <div className="flex flex-col items-center space-y-2 w-full">
                   <Link
-                    href="/event/georgia-supreme-court-2026"
+                    href="/event/georgia-elections-2026"
                     className="inline-flex items-center justify-center px-4 py-2 rounded-full text-xs font-medium transition-all transform hover:scale-105 bg-green-600 text-white hover:bg-green-700 shadow-lg w-full max-w-xs"
                   >
-                    <span>⚖️ Kataas-taasang Hukuman ng GA 2026</span>
+                    <span>🗳️ Halalan sa Georgia 2026</span>
                   </Link>
                 </div>
               </div>
@@ -304,7 +304,7 @@ export default function GeorgiaSupremeCourt2026() {
               if (typeof window !== 'undefined' && window.gtag) {
                 window.gtag('event', 'voting_info_button_click', {
                   event_category: 'Engagement',
-                  event_label: 'ga-sc-2026',
+                  event_label: 'ga-elections-2026',
                   state: 'GA'
                 });
               }
@@ -315,7 +315,7 @@ export default function GeorgiaSupremeCourt2026() {
                   event_type: 'voting_info_button_click',
                   metadata: {
                     state: 'GA',
-                    event_type: 'ga-sc-2026',
+                    event_type: 'ga-elections-2026',
                     button_location: 'event_page_banner',
                     date: new Date().toISOString().split('T')[0],
                     timestamp: new Date().toISOString()
