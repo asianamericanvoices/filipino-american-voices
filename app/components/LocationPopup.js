@@ -40,7 +40,7 @@ export default function LocationPopup({ state, eventType }) {
     const content = {
       'GA': {
         title: 'Mga botante ng Georgia',
-        subtitle: 'Impormasyon sa Halalan: Kataas-taasang Hukuman ng Georgia (Primarya 2026)',
+        subtitle: 'Impormasyon sa Halalan: Pangkalahatang Halalan sa Georgia, Nobyembre 3, 2026 — Senado, Gobernador, Kongreso at PSC',
         resources: [
           {
             icon: Vote,
@@ -65,16 +65,17 @@ export default function LocationPopup({ state, eventType }) {
           },
           {
             icon: Calendar,
-            title: 'Mahahalagang petsa (Primarya)',
-            description: 'Araw ng Primarya: Mayo 19, 2026',
+            title: 'Mahahalagang petsa',
+            description: 'Araw ng Halalan: Nobyembre 3, 2026 (bukas ang botohan 7 a.m.–7 p.m.)',
             dates: [
-              'Maagang pagboto (kasalukuyan): Abril 27 - Mayo 15, 2026',
-              'Huling araw para sa absentee ballot: Mayo 8, 2026',
-              'Voter registration deadline: Abril 20, 2026 (lampas na)'
+              'Huling araw ng voter registration: Oktubre 5, 2026',
+              'Maagang pagboto: Oktubre 13 - Oktubre 30, 2026',
+              'Huling araw para humiling ng absentee ballot: Oktubre 23, 2026',
+              'Pagbalik ng absentee ballot: bago mag-7 p.m. sa Araw ng Halalan, Nobyembre 3'
             ]
           }
         ],
-        footerMessage: 'Ang halalan para sa Mahistrado ng Kataas-taasang Hukuman ng Georgia ay nonpartisan at nagaganap sa primarya ng Mayo 19, hindi sa Nobyembre. Bumoto sa Mayo!'
+        footerMessage: 'Sa Pangkalahatang Halalan sa Nobyembre 3, 2026, pipiliin ang U.S. Senador, Gobernador, mga Kinatawan sa Kongreso at Public Service Commission ng Georgia. Bukas ang botohan mula 7 a.m. hanggang 7 p.m. Bumoto para marinig ang tinig ng komunidad ng Filipino!'
       },
       'PA': {
         title: 'Mga botante ng Pennsylvania',
