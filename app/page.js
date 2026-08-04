@@ -508,7 +508,7 @@ export default function FilipinoAmericanVoices() {
               <span className="text-sm font-bold text-gray-700">🗳️ Mahahalagang Halalan:</span>
               <Link href="/event/alaska-senate-2026" className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-purple-600 text-white hover:bg-purple-700 shadow transition-colors">🏔️ Senado ng Alaska 2026</Link>
               <Link href="/event/georgia-elections-2026" className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-green-600 text-white hover:bg-green-700 shadow transition-colors">🍑 Halalan sa Georgia 2026</Link>
-              <Link href="/event/north-carolina-elections-2026" className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-red-600 text-white hover:bg-red-700 shadow transition-colors">🗳️ Halalan sa North Carolina 2026</Link>
+              <Link href="/event/north-carolina-elections-2026" className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-blue-600 text-white hover:bg-blue-700 shadow transition-colors">🗳️ Halalan sa North Carolina 2026</Link>
             </div>
           </div>
         </div>

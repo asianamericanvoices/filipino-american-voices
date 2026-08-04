@@ -21,7 +21,7 @@ export default function NorthCarolinaElections2026() {
 
   const EVENT_NAME = 'North Carolina Elections 2026';
   const EVENT_TITLE = 'Halalan sa North Carolina 2026';
-  const EVENT_COLOR = 'bg-green-100 text-green-800 border-green-300';
+  const EVENT_COLOR = 'bg-blue-100 text-blue-800 border-blue-300';
 
   const categories = [
     { id: 'all', name: 'Lahat ng Balita', icon: Globe },
@@ -204,7 +204,7 @@ export default function NorthCarolinaElections2026() {
                 <span className="text-sm font-bold text-gray-700">🗳️ Mahahalagang Halalan:</span>
                 <Link
                   href="/event/north-carolina-elections-2026"
-                  className="inline-flex items-center px-5 py-2.5 rounded-full text-sm font-medium transition-all transform hover:scale-105 bg-green-600 text-white hover:bg-green-700 shadow-lg"
+                  className="inline-flex items-center px-5 py-2.5 rounded-full text-sm font-medium transition-all transform hover:scale-105 bg-blue-600 text-white hover:bg-blue-700 shadow-lg"
                 >
                   <span>🗳️ Halalan sa NC 2026</span>
                 </Link>
@@ -216,7 +216,7 @@ export default function NorthCarolinaElections2026() {
                 <div className="flex flex-col items-center space-y-2 w-full">
                   <Link
                     href="/event/north-carolina-elections-2026"
-                    className="inline-flex items-center justify-center px-4 py-2 rounded-full text-xs font-medium transition-all transform hover:scale-105 bg-green-600 text-white hover:bg-green-700 shadow-lg w-full max-w-xs"
+                    className="inline-flex items-center justify-center px-4 py-2 rounded-full text-xs font-medium transition-all transform hover:scale-105 bg-blue-600 text-white hover:bg-blue-700 shadow-lg w-full max-w-xs"
                   >
                     <span>🗳️ Halalan sa NC 2026</span>
                   </Link>
@@ -228,10 +228,10 @@ export default function NorthCarolinaElections2026() {
       </header>
 
       {/* Event Banner - Dynamic Breaking News Ticker */}
-      <div className="bg-green-600 text-white py-2">
+      <div className="bg-blue-600 text-white py-2">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center">
-            <span className="bg-white text-green-600 px-2 py-1 text-xs font-bold rounded mr-4 flex-shrink-0">
+            <span className="bg-white text-blue-600 px-2 py-1 text-xs font-bold rounded mr-4 flex-shrink-0">
               Espesyal na Ulat
             </span>
             <div className="overflow-hidden flex-1">
@@ -239,7 +239,7 @@ export default function NorthCarolinaElections2026() {
                 {getBreakingNews().map((item, index) => (
                   <span key={item.id || index}>
                     {item.url ? (
-                      <Link href={item.url} className="hover:text-green-200 transition-colors">
+                      <Link href={item.url} className="hover:text-blue-200 transition-colors">
                         {item.title}
                       </Link>
                     ) : (
@@ -297,7 +297,7 @@ export default function NorthCarolinaElections2026() {
 
 
       {/* Voting Information Button */}
-      <div className="bg-gradient-to-r from-green-50 to-yellow-50 py-4 border-b border-green-200">
+      <div className="bg-gradient-to-r from-blue-50 to-yellow-50 py-4 border-b border-blue-200">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <button
             onClick={() => {
@@ -324,7 +324,7 @@ export default function NorthCarolinaElections2026() {
               });
               setShowManualPopup(true);
             }}
-            className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-green-600 hover:bg-green-700 text-white font-bold rounded-full shadow-lg transition-all transform hover:scale-105"
+            className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-full shadow-lg transition-all transform hover:scale-105"
           >
             <Vote className="w-5 h-5" />
             <span className="text-lg">🗳️ Impormasyon sa pagboto ng North Carolina</span>
@@ -365,7 +365,7 @@ export default function NorthCarolinaElections2026() {
                     </div>
 
                     <div className="mt-6">
-                      <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 leading-tight group-hover:text-green-600 transition-colors font-filipino">
+                      <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 leading-tight group-hover:text-blue-600 transition-colors font-filipino">
                         {getDisplayTitle(featuredArticle)}
                       </h1>
 
@@ -385,7 +385,7 @@ export default function NorthCarolinaElections2026() {
                       </div>
 
                       <div className="mt-6 flex items-center justify-between">
-                        <div className="inline-flex items-center space-x-2 text-green-600 hover:text-green-700 font-medium">
+                        <div className="inline-flex items-center space-x-2 text-blue-600 hover:text-blue-700 font-medium">
                           <span>Basahin ang buong artikulo</span>
                           <ChevronRight className="w-4 h-4" />
                         </div>
@@ -414,7 +414,7 @@ export default function NorthCarolinaElections2026() {
               <div className="bg-gray-50 rounded-lg p-6">
                 <div className="flex items-center justify-between mb-4">
                   <h2 className="text-lg font-bold text-gray-900 flex items-center font-filipino">
-                    <TrendingUp className="w-5 h-5 mr-2 text-green-600" />
+                    <TrendingUp className="w-5 h-5 mr-2 text-blue-600" />
                     Iba pang sikat na balita
                   </h2>
                 </div>
@@ -424,11 +424,11 @@ export default function NorthCarolinaElections2026() {
                     <article key={article.id} className="group cursor-pointer">
                       <a href={getArticleUrl(article)} className="block">
                         <div className="flex space-x-3">
-                          <span className="text-2xl font-bold text-green-600 mt-1">
+                          <span className="text-2xl font-bold text-blue-600 mt-1">
                             {index + 1}
                           </span>
                           <div className="flex-1">
-                            <h3 className="font-semibold text-gray-900 group-hover:text-green-600 transition-colors leading-tight font-filipino">
+                            <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors leading-tight font-filipino">
                               {getDisplayTitle(article)}
                             </h3>
                             <div className="mt-2 flex items-center text-xs text-gray-500 space-x-2">
@@ -497,7 +497,7 @@ export default function NorthCarolinaElections2026() {
                         className="w-full h-48 object-cover rounded-lg mb-3"
                       />
                     )}
-                    <h3 className="text-lg font-bold text-gray-900 group-hover:text-green-600 transition-colors leading-tight font-filipino mb-2">
+                    <h3 className="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors leading-tight font-filipino mb-2">
                       {getDisplayTitle(article)}
                     </h3>
                     <p className="text-sm text-gray-600 line-clamp-2 mb-3">
