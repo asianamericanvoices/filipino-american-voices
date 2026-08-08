@@ -113,7 +113,7 @@ export default function ManualVotingInfoPopup({ state, eventType, isOpen, onClos
       },
       'AK': {
         title: 'Mga botante ng Alaska',
-        subtitle: 'Impormasyon sa Halalan: Senado ng Alaska 2026',
+        subtitle: 'Impormasyon sa Halalan sa Alaska 2026 — Senado at Gobernador',
         resources: [
           {
             icon: Vote,
