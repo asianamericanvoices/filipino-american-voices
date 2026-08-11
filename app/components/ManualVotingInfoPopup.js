@@ -34,6 +34,83 @@ export default function ManualVotingInfoPopup({ state, eventType, isOpen, onClos
 
   const getPopupContent = () => {
     const content = {
+      'MI': {
+        title: 'Mga botante ng Michigan',
+        subtitle: 'Impormasyon sa Halalan sa Michigan, Nobyembre 3, 2026 — Gobernador, Senado at Kongreso',
+        resources: [
+          {
+            icon: Vote,
+            title: 'Tingnan ang voter registration',
+            description: 'Tingnan ang inyong status ng pagpapatala',
+            link: 'https://mvic.sos.state.mi.us/',
+            linkText: 'Pumunta sa Michigan Voter Information Center'
+          },
+          {
+            icon: FileText,
+            title: 'Absentee (mail) ballot',
+            description: 'Mag-apply ng pagboto sa pamamagitan ng koreo',
+            link: 'https://mvic.sos.state.mi.us/AVApplication',
+            linkText: 'Application ng absentee ballot'
+          },
+          {
+            icon: MapPin,
+            title: 'Hanapin ang inyong polling place',
+            description: 'Hanapin ang pinakamalapit na presinto',
+            link: 'https://mvic.sos.state.mi.us/',
+            linkText: 'Tingnan ang lokasyon ng presinto'
+          },
+          {
+            icon: Calendar,
+            title: 'Mahahalagang petsa',
+            description: 'Araw ng Halalan: Nobyembre 3, 2026 (bukas ang botohan 7 a.m.–8 p.m.)',
+            dates: [
+              'Huling araw ng voter registration (online/koreo): Oktubre 19, 2026 (pagkatapos, in-person same-day hanggang Araw ng Halalan)',
+              'Maagang pagboto: Oktubre 24 - Nobyembre 1, 2026',
+              'Huling araw para sa absentee ballot: Oktubre 30, 2026 (Biyernes bago ang halalan)',
+              'Pagbalik ng absentee ballot: bago mag-8 p.m. sa Nobyembre 3'
+            ]
+          }
+        ],
+        footerMessage: 'Nag-aalok ang Michigan ng same-day registration at no-excuse absentee (mail) voting; lahat ng rehistradong botante ay maaaring lumahok.'
+      },
+      'NV': {
+        title: 'Mga botante ng Nevada',
+        subtitle: 'Impormasyon sa Halalan sa Nevada, Nobyembre 3, 2026 — Gobernador at Kongreso',
+        resources: [
+          {
+            icon: Vote,
+            title: 'Tingnan ang voter registration',
+            description: 'Tingnan ang inyong status ng pagpapatala',
+            link: 'https://www.nvsos.gov/votersearch/',
+            linkText: 'Pumunta sa Nevada Voter Search'
+          },
+          {
+            icon: FileText,
+            title: 'Mail ballot at pag-track',
+            description: 'Nagpapadala ang Nevada ng mail ballot sa lahat ng rehistradong botante',
+            link: 'https://www.nvsos.gov/elections/voters/tracking',
+            linkText: 'I-track ang inyong mail ballot'
+          },
+          {
+            icon: MapPin,
+            title: 'Presinto at early voting',
+            description: 'Hanapin ang lugar ng botohan at early voting',
+            link: 'https://www.nvsos.gov/elections/election-information/2026-election-information/2026-polling-locations',
+            linkText: 'Tingnan ang lokasyon ng botohan'
+          },
+          {
+            icon: Calendar,
+            title: 'Mahahalagang petsa',
+            description: 'Araw ng Halalan: Nobyembre 3, 2026 (bukas ang botohan 7 a.m.–7 p.m.)',
+            dates: [
+              'Huling araw ng online voter registration: Oktubre 29, 2026 (pagkatapos, same-day hanggang Araw ng Halalan)',
+              'Maagang pagboto: Oktubre 17 - Oktubre 30, 2026',
+              'Pagbalik ng mail ballot: dapat may postmark sa Araw ng Halalan, o ihulog sa drop box bago mag-7 p.m.'
+            ]
+          }
+        ],
+        footerMessage: 'Awtomatikong nagpapadala ang Nevada ng mail ballot sa bawat rehistradong botante at nag-aalok ng same-day registration.'
+      },
       'GA': {
         title: 'Mga botante ng Georgia',
         subtitle: 'Impormasyon sa Halalan: Pangkalahatang Halalan sa Georgia, Nobyembre 3, 2026 — Senado, Gobernador, Kongreso at PSC',
