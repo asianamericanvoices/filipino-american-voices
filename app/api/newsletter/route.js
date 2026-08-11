@@ -1,5 +1,7 @@
 // app/api/newsletter/route.js - Newsletter subscription endpoint for Filipino American Voices
 import { NextResponse } from 'next/server';
+
+export const dynamic = 'force-dynamic';
 import { Resend } from 'resend';
 import crypto from 'crypto';
 
