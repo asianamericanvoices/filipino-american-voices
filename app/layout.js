@@ -6,8 +6,11 @@ export const metadata = {
   title: 'Tinig ng Filipino Amerikano | Filipino American Voices',
   description: 'Independiyenteng balita para sa komunidad ng Filipino Amerikano. Mga update tungkol sa pulitika, kalusugan, edukasyon, imigrasyon at buhay ng komunidad.',
   keywords: 'Filipino American, Asian American, news, politics, healthcare, education, immigration, community, Pinoy, Filipino Amerikano, balita',
-  authors: [{ name: 'Filipino American Voices', url: 'https://filipino-american-voices.vercel.app' }],
-  metadataBase: new URL('https://filipino-american-voices.vercel.app'),
+  authors: [{ name: 'Filipino American Voices', url: 'https://www.tinigngfilipinoamerikano.us' }],
+  metadataBase: new URL('https://www.tinigngfilipinoamerikano.us'),
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     title: 'Tinig ng Filipino Amerikano | Filipino American Voices',
     description: 'Independiyenteng balita para sa komunidad ng Filipino Amerikano | Independent news for Filipino American communities',
@@ -15,7 +18,7 @@ export const metadata = {
     locale: 'tl_PH',
     alternateLocale: 'en_US',
     siteName: 'Filipino American Voices',
-    url: 'https://filipino-american-voices.vercel.app',
+    url: 'https://www.tinigngfilipinoamerikano.us',
     images: [
       {
         url: '/og-logo-filipino-3.png',
@@ -32,19 +35,35 @@ export const metadata = {
     title: 'Tinig ng Filipino Amerikano | Filipino American Voices',
     description: 'Independiyenteng balita para sa komunidad ng Filipino Amerikano',
     images: ['/og-logo-filipino-3.png']
-  },
-  alternates: {
-    languages: {
-      'en': '/en',
-      'tl': '/tl'
-    }
   }
+}
+
+// schema.org publisher identity — helps Google News and AI answer engines
+// recognize us as a trusted in-language news outlet.
+const ORG_JSON_LD = {
+  '@context': 'https://schema.org',
+  '@type': 'NewsMediaOrganization',
+  name: 'Tinig ng Filipino Amerikano',
+  alternateName: 'Filipino American Voices',
+  url: 'https://www.tinigngfilipinoamerikano.us',
+  logo: 'https://www.tinigngfilipinoamerikano.us/og-logo-filipino-3.png',
+  inLanguage: 'tl',
+  parentOrganization: {
+    '@type': 'NewsMediaOrganization',
+    name: 'Asian American Voices Media, Inc.',
+  },
 }
 
 export default function RootLayout({ children }) {
   return (
     <html lang="tl">
       <head>
+        {/* Organization structured data for search + AI answer engines */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(ORG_JSON_LD) }}
+        />
+
         {/* Google Tag Manager - Sunflower Marketing (FAV container) */}
         <Script id="google-tag-manager" strategy="afterInteractive">
           {`
