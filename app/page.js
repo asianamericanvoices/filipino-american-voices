@@ -513,6 +513,7 @@ export default function FilipinoAmericanVoices() {
               <Link href="/event/michigan-elections-2026" className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-yellow-600 text-white hover:bg-yellow-700 shadow transition-colors">🚗 Halalan sa Michigan 2026</Link>
               <Link href="/event/nevada-elections-2026" className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-pink-600 text-white hover:bg-pink-700 shadow transition-colors">🎰 Halalan sa Nevada 2026</Link>
               <Link href="/event/iowa-senate-2026" className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-red-600 text-white hover:bg-red-700 shadow transition-colors">🌽 Halalan sa Senado ng Iowa 2026</Link>
+              {false && (<Link href="/event/texas-elections-2026" className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-orange-600 text-white hover:bg-orange-700 shadow transition-colors">🤠 Halalan sa Texas 2026</Link>)}
             </div>
           </div>
         </div>

@@ -115,6 +115,47 @@ export default function LocationPopup({ state, eventType }) {
         ],
         footerMessage: 'Awtomatikong nagpapadala ang Nevada ng mail ballot sa bawat rehistradong botante at nag-aalok ng same-day registration.'
       },
+      'TX': {
+        title: 'Mahal naming mga botante sa Texas',
+        subtitle: 'Impormasyon sa halalan sa Texas 2026 — Senado, Gobernador at Kongreso (Primarya Marso 3, Pangkalahatang Halalan Nob 3)',
+        resources: [
+          {
+            icon: Vote,
+            title: 'Tingnan ang pagpaparehistro',
+            description: 'Tingnan ang katayuan ng iyong rehistro (“Am I Registered?”)',
+            link: 'https://teamrv-mvp.sos.texas.gov/MVP/mvp.do',
+            linkText: 'Bisitahin ang Texas “Am I Registered?”'
+          },
+          {
+            icon: FileText,
+            title: 'Pagpaparehistro ng botante',
+            description: 'Walang online na rehistro ang Texas — kailangang mag-mail o personal na magparehistro',
+            link: 'https://www.votetexas.gov/register-to-vote/index.html',
+            linkText: 'Gabay sa pagpaparehistro sa VoteTexas.gov'
+          },
+          {
+            icon: MapPin,
+            title: 'Hanapin ang lugar ng botohan',
+            description: 'Hanapin ang lugar ng botohan malapit sa iyo',
+            link: 'https://www.votetexas.gov/voting/where.html',
+            linkText: 'Hanapin ang lokasyon ng botohan'
+          },
+          {
+            icon: Calendar,
+            title: 'Mahahalagang petsa',
+            description: 'Araw ng Pangkalahatang Halalan: Nobyembre 3, 2026 (7 n.u.–7 n.g.)',
+            dates: [
+              'Primarya (pagpili ng kandidato ng partido): Marso 3, 2026',
+              'Deadline ng rehistro para sa primarya: Pebrero 2, 2026',
+              'Deadline ng rehistro para sa pangkalahatang halalan: Oktubre 5, 2026 (kailangan ng Texas na magparehistro 30 araw bago; walang same-day registration)',
+              'Maagang pagboto (pangkalahatan): Oktubre 19 – 30, 2026',
+              'Deadline ng aplikasyon para sa mail ballot: Oktubre 23, 2026 (para lamang sa kwalipikado: 65+ taon, may kapansanan, wala sa county, o nakakulong)',
+              'Deadline ng pagbalik ng mail ballot: bago mag-7 n.g. Nobyembre 3, 2026 (o may selyo sa araw ng halalan at matanggap bago ang Nob 4)'
+            ]
+          }
+        ],
+        footerMessage: 'Walang online o same-day na rehistro ang Texas — magparehistro bago ang Oktubre 5, 2026. Ang pagboto sa pamamagitan ng koreo ay para lamang sa mga kwalipikadong botante.'
+      },
       'GA': {
         title: 'Mga botante ng Georgia',
         subtitle: 'Impormasyon sa Halalan: Pangkalahatang Halalan sa Georgia, Nobyembre 3, 2026 — Senado, Gobernador, Kongreso at PSC',
