@@ -97,7 +97,7 @@ export default function FilipinoAmericanVoices() {
         });
       } else {
         console.log('Walang nakitang artikulo, gumagamit ng sample data');
-        const mockData = getMockArticles();
+        const mockData = [];
         setArticles(mockData);
         setHasMore(false);
       }
@@ -107,7 +107,7 @@ export default function FilipinoAmericanVoices() {
       console.error('Error sa pag-load ng mga artikulo:', error);
       console.log('Gumagamit ng sample data');
 
-      const mockData = getMockArticles();
+      const mockData = [];
       setArticles(mockData);
       setHasMore(false);
       setLoading(false);
@@ -214,53 +214,10 @@ export default function FilipinoAmericanVoices() {
     }
   };
 
-  // Mock data function for fallback
-  const getMockArticles = () => {
-    return [
-      {
-        id: 1,
-        originalTitle: "Trump calls for U.S. census to exclude for the first time people with no legal status",
-        displayTitle: "Nananawagan si Trump na ibukod sa census ng US ang mga taong walang legal na status",
-        aiSummary: "Inihayag ni Pangulong Trump ang planong 'bagong' census na magbubukod sa mga taong walang legal na status, na muling sinisimulan ang kontrobersyal na pagsisikap mula sa kanyang unang termino. Inaatas ng Ika-14 na Amendmento na bilangin ang 'lahat ng tao' sa bawat estado para matukoy ang representasyon sa Kongreso.",
-        source: "NPR",
-        publishedDate: "2025-08-07",
-        topic: "Immigration",
-        priority: "high",
-        relevanceScore: 8.5,
-        imageUrl: "https://images.unsplash.com/photo-1589994965851-a8f479c573a9?w=800&h=400&fit=crop",
-        originalUrl: "https://www.npr.org/2025/08/07/nx-s1-5265650/new-census-trump-immigrants-counted",
-        slug: "trump-census-immigration-policy"
-      },
-      {
-        id: 2,
-        originalTitle: "Immigrants who are crime victims and waiting for visas now face deportation",
-        displayTitle: "Mga imigranteng biktima ng krimen na naghihintay ng visa ay nahaharap na sa deportasyon",
-        aiSummary: "Ang ilang imigranteng biktima ng krimen na nag-a-apply para sa U visa ay dinedetina, bilang bahagi ng malawakang kampanya ng deportasyon ng administrasyong Trump. Ang programang U visa ay dinisenyo upang tulungan ang mga biktima ng krimen na nakikipagtulungan sa mga awtoridad, ngunit hindi na pinoprotektahan ng bagong patakaran ang mga aplikante mula sa proseso ng deportasyon.",
-        source: "NBC News",
-        publishedDate: "2025-08-07",
-        topic: "Immigration",
-        priority: "high",
-        relevanceScore: 9.0,
-        imageUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=400&fit=crop",
-        originalUrl: "https://www.nbcnews.com/news/latino/immigrants-u-visas-deportation-new-trump-rules-ice-rcna223480",
-        slug: "u-visa-deportation-changes"
-      },
-      {
-        id: 3,
-        originalTitle: "Trump administration freezes $108M at Duke amid inquiry into alleged racial preferences",
-        displayTitle: "Ipinag-freeze ng administrasyong Trump ang $108M sa Duke dahil sa imbestigasyon sa racial preferences",
-        aiSummary: "Ipinag-freeze ng administrasyong Trump ang $108 milyong pondo ng pananaliksik ng Duke University, na inakusahang nagdi-diskrimina sa lahi sa pamamagitan ng mga patakaran ng preference. Ito ang pinakabagong aksyon pagkatapos ng katulad na mga hakbang laban sa Harvard, Columbia at Cornell, bilang bahagi ng mas malawak na kampanya laban sa mga programa ng diversity, equity at inclusion.",
-        source: "AP News",
-        publishedDate: "2025-08-07",
-        topic: "Education",
-        priority: "medium",
-        relevanceScore: 7.5,
-        imageUrl: "https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?w=800&h=400&fit=crop",
-        originalUrl: "https://apnews.com/article/duke-university-funding-freeze-trump-dei-23a70359ee44a21fdc55bef6dfe52413",
-        slug: "duke-university-funding-freeze"
-      }
-    ];
-  };
+  // A placeholder-article fallback used to live here. It substituted fabricated stories
+  // attributed to NPR / NBC News / AP News, dated 2025-08-07, whenever the fetch failed
+  // or returned nothing -- rendering them as genuine reporting, hero included. The empty
+  // state below is the only honest answer, so the fallback is now an empty list.
 
   // Generate dynamic breaking news ticker from latest articles
   const getBreakingNews = () => {
@@ -269,6 +226,13 @@ export default function FilipinoAmericanVoices() {
     // Fact Checks are kept out of the ticker, matching the Chinese and Korean sites.
     const latestNews = articles
       .filter(article => article.topic !== 'Fact Checks')
+      // Drop untranslated articles BEFORE slicing. This filter used to run after the
+      // slice, so an untranslated article consumed one of the five ticker slots and then
+      // vanished, leaving the ticker short.
+      .filter(article => article.translatedTitles?.tagalog)
+      // Sort by news date explicitly. published-articles returns hero-first, so without
+      // this a deliberately pinned older hero would lead the "breaking" ticker.
+      .sort((a, b) => new Date(b.publishedDate || b.scrapedDate || 0) - new Date(a.publishedDate || a.scrapedDate || 0))
       .slice(0, 5)
       .map(article => {
         // Tagalog translated title ONLY. There used to be a displayTitle fallback here,
