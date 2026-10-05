@@ -18,10 +18,20 @@ export default function TexasElections2026() {
   const [newsletterStatus, setNewsletterStatus] = useState('');
   const [newsletterMessage, setNewsletterMessage] = useState('');
   const [showManualPopup, setShowManualPopup] = useState(false);
+  const [visibleOther, setVisibleOther] = useState(6);
 
   const EVENT_NAME = 'Texas Elections 2026';
   const EVENT_TITLE = 'Halalan sa Texas 2026';
   const EVENT_COLOR = 'bg-orange-100 text-orange-800 border-orange-300';
+
+  const SUBTAG_BARS = [
+    {
+      tag: 'Texas Railroad Commission 2026',
+      title: 'Komisyon sa Riles ng Texas 2026',
+      blurb: 'Saklaw ng halalan sa ahensyang nagreregula ng enerhiya at langis/gas ng Texas',
+    },
+  ];
+  const SUBTAG_VALUES = SUBTAG_BARS.map((b) => b.tag);
 
   const categories = [
     { id: 'all', name: 'Lahat ng Balita', icon: Globe },
@@ -83,9 +93,9 @@ export default function TexasElections2026() {
   };
 
   const getBreakingNews = () => {
-    if (articles.length === 0) return [{ title: `Naglo-load ng pinakabagong balita tungkol sa ${EVENT_TITLE}...`, url: null }];
+    if (mainArticles.length === 0) return [{ title: `Naglo-load ng pinakabagong balita tungkol sa ${EVENT_TITLE}...`, url: null }];
 
-    const latestNews = articles
+    const latestNews = mainArticles
       .slice(0, 5)
       .map(article => {
         const caption = article.socialCaptions?.tagalog || article.translatedTitles?.tagalog || article.display_title || article.ai_title;
@@ -97,7 +107,7 @@ export default function TexasElections2026() {
         };
       });
 
-    return latestNews.length > 0 ? latestNews : [{ title: `${EVENT_TITLE} - ${articles.length} artikulo sa kabuuan`, url: null }];
+    return latestNews.length > 0 ? latestNews : [{ title: `${EVENT_TITLE} - ${mainArticles.length} artikulo sa kabuuan`, url: null }];
   };
 
   const getDisplayTitle = (article) => {
@@ -113,11 +123,15 @@ export default function TexasElections2026() {
     return `/article/${article.id}`;
   };
 
-  const featuredArticle = articles.find(article =>
-    article.isEventHero && article.eventHeroFor === EVENT_NAME
-  ) || articles[0];
+  const isSubtagArticle = (article) =>
+    Array.isArray(article.eventSubtags) && article.eventSubtags.some((t) => SUBTAG_VALUES.includes(t));
+  const mainArticles = articles.filter((article) => !isSubtagArticle(article));
 
-  const otherArticles = articles.filter(article => article.id !== featuredArticle?.id);
+  const featuredArticle = mainArticles.find(article =>
+    article.isEventHero && article.eventHeroFor === EVENT_NAME
+  ) || mainArticles[0];
+
+  const otherArticles = mainArticles.filter(article => article.id !== featuredArticle?.id);
 
   const handleRecaptchaLoad = () => {
     if (window.grecaptcha && window.grecaptcha.ready) {
@@ -340,7 +354,7 @@ export default function TexasElections2026() {
             <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900"></div>
             <p className="mt-4 text-gray-600">Naglo-load...</p>
           </div>
-        ) : articles.length === 0 ? (
+        ) : mainArticles.length === 0 ? (
           <div className="text-center py-12">
             <p className="text-gray-600">Wala pang mga balita</p>
           </div>
@@ -487,7 +501,7 @@ export default function TexasElections2026() {
           <div className="mt-12">
             <h2 className="text-2xl font-bold text-gray-900 mb-6">Higit pang mga balita</h2>
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {otherArticles.map((article) => (
+              {otherArticles.slice(0, visibleOther).map((article) => (
                 <article key={article.id} className="group cursor-pointer">
                   <a href={getArticleUrl(article)} className="block">
                     {article.imageUrl && (
@@ -515,8 +529,67 @@ export default function TexasElections2026() {
                 </article>
               ))}
             </div>
+            {otherArticles.length > visibleOther && (
+              <div className="text-center mt-8">
+                <button
+                  onClick={() => setVisibleOther((n) => n + 6)}
+                  className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-medium bg-orange-600 text-white hover:bg-orange-700 transition-colors shadow"
+                >
+                  Magpakita pa ng mga artikulo
+                </button>
+              </div>
+            )}
           </div>
         )}
+
+        {/* Subset sub-bars (e.g. Railroad Commission) — each shows its subtagged articles */}
+        {SUBTAG_BARS.map((bar) => {
+          const barArticles = articles.filter(
+            (article) => Array.isArray(article.eventSubtags) && article.eventSubtags.includes(bar.tag)
+          );
+          if (barArticles.length === 0) return null;
+          return (
+            <div key={bar.tag} className="mt-16">
+              <div className="flex items-center gap-3 border-l-4 border-slate-600 bg-slate-50 rounded-r-lg px-5 py-4 mb-6">
+                <div>
+                  <h2 className="text-2xl font-bold text-gray-900 font-filipino leading-tight">
+                    {bar.title}
+                  </h2>
+                  <p className="text-sm text-gray-500">{bar.blurb}</p>
+                </div>
+              </div>
+              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                {barArticles.map((article) => (
+                  <article key={article.id} className="group cursor-pointer">
+                    <a href={getArticleUrl(article)} className="block">
+                      {article.imageUrl && (
+                        <img
+                          src={article.imageUrl}
+                          alt={getDisplayTitle(article)}
+                          className="w-full h-48 object-cover rounded-lg mb-3"
+                        />
+                      )}
+                      <h3 className="text-lg font-bold text-gray-900 group-hover:text-orange-600 transition-colors leading-tight font-filipino mb-2">
+                        {getDisplayTitle(article)}
+                      </h3>
+                      <p className="text-sm text-gray-600 line-clamp-2 mb-3">
+                        {getDisplaySummary(article)}
+                      </p>
+                      <div className="flex items-center text-xs text-gray-500 space-x-2">
+                        <span>{article.source}</span>
+                        <span>•</span>
+                        <div className="flex items-center space-x-1">
+                          <Clock className="w-3 h-3" />
+                          <span>{formatDate(article.publishedDate || article.scraped_date)}</span>
+                        </div>
+                      </div>
+                    </a>
+                  </article>
+                ))}
+              </div>
+            </div>
+          );
+        })}
       </main>
 
       {/* Footer */}
