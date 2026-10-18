@@ -9,6 +9,7 @@ import Link from 'next/link';
 import SearchBar from '../../components/SearchBar';
 import LocationPopup from '../../components/LocationPopup';
 import ManualVotingInfoPopup from '../../components/ManualVotingInfoPopup';
+import { RRC_PAGE_PUBLIC, RRC_PAGE_PATH } from '../../../lib/rrcPage';
 
 export default function TexasElections2026() {
   const [articles, setArticles] = useState([]);
@@ -29,6 +30,8 @@ export default function TexasElections2026() {
       tag: 'Texas Railroad Commission 2026',
       title: 'Komisyon sa Riles ng Texas 2026',
       blurb: 'Saklaw ng halalan sa ahensyang nagreregula ng enerhiya at langis/gas ng Texas',
+      href: RRC_PAGE_PUBLIC ? RRC_PAGE_PATH : null, // hidden until the RRC page launches
+      linkLabel: 'Buong saklaw ng Railroad Commission',
     },
   ];
   const SUBTAG_VALUES = SUBTAG_BARS.map((b) => b.tag);
@@ -181,7 +184,7 @@ export default function TexasElections2026() {
 
       <ManualVotingInfoPopup
         state="TX"
-        eventType="mi-elections-2026"
+        eventType="texas-elections-2026"
         isOpen={showManualPopup}
         onClose={() => setShowManualPopup(false)}
       />
@@ -318,7 +321,7 @@ export default function TexasElections2026() {
               if (typeof window !== 'undefined' && window.gtag) {
                 window.gtag('event', 'voting_info_button_click', {
                   event_category: 'Engagement',
-                  event_label: 'mi-elections-2026',
+                  event_label: 'texas-elections-2026',
                   state: 'TX'
                 });
               }
@@ -329,7 +332,7 @@ export default function TexasElections2026() {
                   event_type: 'voting_info_button_click',
                   metadata: {
                     state: 'TX',
-                    event_type: 'mi-elections-2026',
+                    event_type: 'texas-elections-2026',
                     button_location: 'event_page_banner',
                     date: new Date().toISOString().split('T')[0],
                     timestamp: new Date().toISOString()
@@ -550,13 +553,22 @@ export default function TexasElections2026() {
           if (barArticles.length === 0) return null;
           return (
             <div key={bar.tag} className="mt-16">
-              <div className="flex items-center gap-3 border-l-4 border-slate-600 bg-slate-50 rounded-r-lg px-5 py-4 mb-6">
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 border-l-4 border-slate-600 bg-slate-50 rounded-r-lg px-5 py-4 mb-6">
                 <div>
                   <h2 className="text-2xl font-bold text-gray-900 font-filipino leading-tight">
                     {bar.title}
                   </h2>
                   <p className="text-sm text-gray-500">{bar.blurb}</p>
                 </div>
+                {bar.href && (
+                  <Link
+                    href={bar.href}
+                    className="inline-flex items-center justify-center self-start md:self-auto px-5 py-2.5 rounded-full text-sm font-medium bg-slate-700 text-white hover:bg-slate-800 transition-colors shadow whitespace-nowrap"
+                  >
+                    {bar.linkLabel}
+                    <ChevronRight className="w-4 h-4 ml-1" />
+                  </Link>
+                )}
               </div>
               <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {barArticles.map((article) => (

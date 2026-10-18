@@ -1,4 +1,6 @@
 // app/sitemap.js - Dynamic sitemap for Filipino American Voices
+import { RRC_PAGE_PUBLIC, RRC_PAGE_SLUG } from '../lib/rrcPage';
+
 // Lists the homepage, event hub pages, and every published article that has a
 // Tagalog/Filipino translation.
 
@@ -16,6 +18,7 @@ const EVENT_SLUGS = [
   'nevada-elections-2026',
   'north-carolina-elections-2026',
   'pennsylvania-1st-district-2026',
+  'texas-elections-2026',
 ];
 
 async function fetchAllPublishedArticles() {
@@ -60,7 +63,7 @@ export default async function sitemap() {
 
   const staticEntries = [
     { url: `${SITE}/`, lastModified: now, changeFrequency: 'hourly', priority: 1.0 },
-    ...EVENT_SLUGS.map((slug) => ({
+    ...[...EVENT_SLUGS, ...(RRC_PAGE_PUBLIC ? [RRC_PAGE_SLUG] : [])].map((slug) => ({
       url: `${SITE}/event/${slug}`,
       lastModified: now,
       changeFrequency: 'daily',
