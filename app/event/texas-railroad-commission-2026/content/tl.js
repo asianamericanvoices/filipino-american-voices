@@ -59,6 +59,10 @@ const tl = {
     lastUpdatedLabel: 'Huling na-update',
     loading: 'Naglo-load…',
     noStories: 'Wala pang mga balita.',
+    readFullAnswer: 'Basahin ang buong sagot',
+    readFullProfile: 'Basahin ang buong profile',
+    showLess: 'Itago',
+    compareByTopic: 'Paghambingin ayon sa paksa',
   },
 
   header: {
