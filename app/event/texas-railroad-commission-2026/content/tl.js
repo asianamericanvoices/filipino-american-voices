@@ -175,6 +175,7 @@ const tl = {
       { key: 'work', label: 'Karanasan sa trabaho' },
       { key: 'office', label: 'Pampublikong posisyon o posisyon sa partido' },
       { key: 'endorsements', label: 'Mga kilalang endorsement' },
+      { key: 'inTheNews', label: 'Sa balita' },
       { group: 'Ang kanilang posisyon sa…' },
       { key: 'bills', label: 'Ang inyong singil sa enerhiya' },
       { key: 'wells', label: 'Mga lumang balon ng langis at gas' },
