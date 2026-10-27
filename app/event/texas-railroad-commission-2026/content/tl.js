@@ -69,14 +69,14 @@ const tl = {
   slides: [
     {
       title: 'Sino ang tumatakbo bilang Texas Railroad Commissioner',
-      question: 'Nakalista ang mga kandidato ayon sa pagkakasunod-sunod sa balota ng Texas, na itinakda ng batas ng estado, hindi ng AAVM.',
+      question: 'Nakalista ang mga kandidato ayon sa pagkakasunod-sunod sa balota ng Texas, na itinakda ng batas ng estado, hindi ng Tinig ng Filipino Amerikano.',
       // Paglalarawan sa kandidato mula sa Q&A ng Community Impact [5]
       candidates: [
         'Si Bo ay isang negosyante at ikatlong henerasyong oilman na may tatlong dekadang karanasan sa industriya.',
         'Si Jon Rosenthal ay isang inhinyero at state representative para sa Northwest Houston.',
         'Dating computer programmer, ngayon ay retirado na.',
       ],
-      note: 'Mga paglalarawan sa kandidato, hinango mula sa Q&A ng Community Impact, Ago. 25, 2026 [5][12a] · Isinalin ng AAVM',
+      note: 'Mga paglalarawan sa kandidato, hinango mula sa Q&A ng Community Impact, Ago. 25, 2026 [5][12a] · Isinalin ng Tinig ng Filipino Amerikano',
     },
     // Slides 2-5: buong sagot ng bawat kandidato sa iisang tanong ng Community Impact [5],
     // isinalin ng AAVM. Ballot order.
@@ -90,7 +90,7 @@ const tl = {
         'Dapat unahin ng Railroad Commission ang mga mamamayan ng Texas kaysa sa malalaking interes ng pera, ngunit kulang ito sa sapat na rekurso para gawin ito. Isusulong ko ang dagdag na pondo para ipatupad ang mga umiiral na patakaran at para maging mas tumutugon sa mga komunidad. Dapat nating pabilisin ang mga permit para sa mga sumusunod sa batas at magpataw ng mabibigat na multa sa mga malalang lumalabag.',
         'Gusto kong lubos na igalang ang karapatan sa ari-arian ng mga may-ari ng lupa, at tiyaking laging nauuna ang karapatan sa ari-arian kaysa sa interes ng industriya. Mas mahusay na transparency. Pasimplehin at linisin ang 100 taon ng mga regulasyon.',
       ],
-      note: 'Mga sagot ng mga kandidato sa iisang questionnaire ng Community Impact, Ago. 25, 2026 [5] · Isinalin ng AAVM',
+      note: 'Mga sagot ng mga kandidato sa iisang questionnaire ng Community Impact, Ago. 25, 2026 [5] · Isinalin ng Tinig ng Filipino Amerikano',
     },
     {
       eyebrow: 'Mga pangunahing posisyon · Sa sarili nilang salita',
@@ -102,7 +102,7 @@ const tl = {
         'Dapat nating pasimplehin ang mga proseso at bawasan ang oras at gastos ng pagkuha ng permit para sa mga sumusunod sa batas, upang hikayatin at itaguyod ang mga responsableng operator. At dapat tayong magpataw ng mabibigat na multa at mahigpit na mga kinakailangan sa mga malalang lumalabag. Dapat may kahihinatnan ang paglabag sa batas, at hindi natin dapat gantimpalaan ang mga kumpanyang kumikilos nang labas sa legal na hangganan.',
         'Kailangan natin ng mas mahusay na transparency, at iwasan ang ‘regulatory capture’. Ang trabaho ng RRC ay hindi itaguyod ang industriya ng langis at gas, kundi gumawa ng mga desisyong nagtitiyak sa karapatan sa ari-arian ng lahat ng Texan. Kailangan natin ng mas mabuting balanse sa pagitan ng surface rights at mineral rights.',
       ],
-      note: 'Mga sagot ng mga kandidato sa iisang questionnaire ng Community Impact, Ago. 25, 2026 [5] · Isinalin ng AAVM',
+      note: 'Mga sagot ng mga kandidato sa iisang questionnaire ng Community Impact, Ago. 25, 2026 [5] · Isinalin ng Tinig ng Filipino Amerikano',
     },
     {
       eyebrow: 'Mga pangunahing posisyon · Sa sarili nilang salita',
@@ -114,7 +114,7 @@ const tl = {
         'Isusulong ko ang pondo para lubhang pabilisin ang pagseselyo ng mga balon at ang paglilinis ng kapaligiran. At makikipagtulungan ako sa mga komunidad at stakeholder ng industriya upang wakasan ang nakagawiang flaring, i-weatherize ang mga pasilidad ng natural gas, magpatupad ng mas mahigpit na setback standards, at iba pang makatwirang hakbang upang mabawasan ang mga panganib sa kapaligiran habang tinitiyak ding patuloy na umuunlad ang mahalagang industriyang ito.',
         'Dapat madaling makakuha ng bayad-pinsala (restitution) sa mga kaso ng pinsala sa ari-arian mula sa mga lindol, pagtagas ng maruming tubig, at iba pa. Ang insurance, bonding, at mga pondo para sa paglilinis na sinusuportahan ng industriya ay pawang mga paraan para suportahan iyon.',
       ],
-      note: 'Mga sagot ng mga kandidato sa iisang questionnaire ng Community Impact, Ago. 25, 2026 [5] · Isinalin ng AAVM',
+      note: 'Mga sagot ng mga kandidato sa iisang questionnaire ng Community Impact, Ago. 25, 2026 [5] · Isinalin ng Tinig ng Filipino Amerikano',
     },
     {
       eyebrow: 'Mga pangunahing posisyon · Sa sarili nilang salita',
@@ -126,7 +126,7 @@ const tl = {
         'Sinusuportahan ko ang all-of-the-above na diskarte sa produksyon ng enerhiya sa Texas. Sa totoo lang – kailangan natin ang lahat ng kuryenteng makukuha natin. Kahit bago pa isaalang-alang ang mga data center, hinihingi ng mabilis na paglago ng lahat ng iba pang industriya at ng populasyon ang ganitong diskarte. Dapat nating itaguyod ang lahat ng produksyon ng enerhiya, kabilang ang natural gas, geothermal, at mga renewable source.',
         'Maaaring maging mahusay ang renewable energy, ngunit kailangan itong makipagkumpitensya sa malayang merkado laban sa fossil fuels. Hindi dapat paboran ng ating gobyerno at mga regulator ang isang uri kaysa sa iba.',
       ],
-      note: 'Mga sagot ng mga kandidato sa iisang questionnaire ng Community Impact, Ago. 25, 2026 [5] · Isinalin ng AAVM',
+      note: 'Mga sagot ng mga kandidato sa iisang questionnaire ng Community Impact, Ago. 25, 2026 [5] · Isinalin ng Tinig ng Filipino Amerikano',
     },
     {
       title: 'Paano bumoto',
@@ -166,7 +166,7 @@ const tl = {
 
   candidatesSection: {
     heading: 'Ang mga kandidato nang magkakatabi',
-    intro: "Tungkol sa bahaging ito: Inilalarawan ang tatlong kandidato sa parehong format, batay sa mga ulat ng balita, mga website ng kampanya at isang questionnaire ng Community Impact na sinagutan nilang lahat [5], at nakaayos ayon sa pagkakasunod-sunod sa balota ng Texas [3]. May tala na “Sa balita” kapag ang mga pahayag o kilos ng isang kandidato sa kampanya ay iniulat ng hindi bababa sa dalawang kilalang news organization at binatikos ng iba pa bukod sa kanyang mga katunggali sa pulitika; kasama rito ang tugon ng kandidato. Hindi nag-eendorso ng mga kandidato ang AAVM.",
+    intro: "Tungkol sa bahaging ito: Inilalarawan ang tatlong kandidato sa parehong format, batay sa mga ulat ng balita, mga website ng kampanya at isang questionnaire ng Community Impact na sinagutan nilang lahat [5], at nakaayos ayon sa pagkakasunod-sunod sa balota ng Texas [3]. May tala na “Sa balita” kapag ang mga pahayag o kilos ng isang kandidato sa kampanya ay iniulat ng hindi bababa sa dalawang kilalang news organization at binatikos ng iba pa bukod sa kanyang mga katunggali sa pulitika; kasama rito ang tugon ng kandidato. Hindi nag-eendorso ng mga kandidato ang Tinig ng Filipino Amerikano.",
     rows: [
       { key: 'work', label: 'Karanasan sa trabaho' },
       { key: 'office', label: 'Pampublikong posisyon o posisyon sa partido' },
@@ -234,11 +234,11 @@ const tl = {
 
   coverage: {
     heading: 'Mga balita tungkol sa halalang ito',
-    intro: 'Mga ulat tungkol sa halalang ito mula sa mga kilalang newsroom sa Texas, isinalin ng AAVM at kinikilala ang orihinal na outlet.',
+    intro: 'Mga ulat tungkol sa halalang ito mula sa mga kilalang newsroom sa Texas, isinalin ng Tinig ng Filipino Amerikano at kinikilala ang orihinal na outlet.',
   },
 
   footer: {
-    disclaimer: 'Hindi nag-eendorso ng mga kandidato ang AAVM.',
+    disclaimer: 'Hindi nag-eendorso ng mga kandidato ang Tinig ng Filipino Amerikano.',
     photoCredit: 'Mga larawan mula sa mga kampanya ng kandidato, gaya ng ibinigay sa Community Impact.',
     corrections: 'Mga pagwawasto: kung may makita kayong mali, mag-email sa',
     correctionsEmail: 'contact@tinigngfilipinoamerikano.us', // site's public contact address; never a personal email
