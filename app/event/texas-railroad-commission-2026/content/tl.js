@@ -210,7 +210,7 @@ const tl = {
       table: {
         work: 'Inhinyero na may humigit-kumulang 25 taon sa loob at paligid ng industriya ng langis at gas [12a]',
         office: 'State representative para sa Northwest Houston sa Texas House [12a]',
-        endorsements: 'Mga editorial board ng Houston Chronicle, Dallas Morning News at Austin American-Statesman [20][21][22]; Texas AFL-CIO [23]; Sierra Club [18]; Alkalde ng Fort Worth na si Mattie Parker (Republikano) [28]; Hawk Dunlap, isang kandidato sa Republican primary para sa puwestong ito [29]',
+        endorsements: 'Mga editorial board ng Houston Chronicle, Dallas Morning News, Austin American-Statesman at San Antonio Express-News [20][21][22][30]; Texas AFL-CIO [23]; Sierra Club [18]; Alkalde ng Fort Worth na si Mattie Parker (Republikano) [28]; Hawk Dunlap, isang kandidato sa Republican primary para sa puwestong ito [29]',
         bills: 'Panatilihing patas ang singil sa gas at pababain ang mga bayarin [9]; ihanda (weatherize) ang mga pasilidad ng gas sa matinding panahon [6]',
         wells: 'Bagong bayarin sa pagtatapon ng saltwater (maruming tubig mula sa oilfield); mas mataas na bond at cash deposit ng mga operator [6]',
         drilling: 'Mas mahigpit na setback (layo ng drilling sa mga tahanan); mas tumutugon sa mga komunidad [5]',
