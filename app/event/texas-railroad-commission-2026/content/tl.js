@@ -69,6 +69,7 @@ const tl = {
   slides: [
     {
       title: 'Sino ang tumatakbo bilang Texas Railroad Commissioner',
+      question: 'Nakalista ang mga kandidato ayon sa pagkakasunod-sunod sa balota ng Texas, na itinakda ng batas ng estado, hindi ng AAVM.',
       // Paglalarawan sa kandidato mula sa Q&A ng Community Impact [5]
       candidates: [
         'Si Bo ay isang negosyante at ikatlong henerasyong oilman na may tatlong dekadang karanasan sa industriya.',
