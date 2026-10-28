@@ -60,6 +60,7 @@ const tl = {
     loading: 'Naglo-load…',
     noStories: 'Wala pang mga balita.',
     readFullAnswer: 'Basahin ang buong sagot',
+    readMore: "Magbasa pa",
     readFullProfile: 'Basahin ang buong profile',
     showLess: 'Itago',
     compareByTopic: 'Paghambingin ayon sa paksa',
@@ -132,6 +133,14 @@ const tl = {
       ],
       note: 'Mga sagot ng mga kandidato sa iisang questionnaire ng Community Impact, Ago. 25, 2026 [5] · Isinalin ng Tinig ng Filipino Amerikano',
     },
+    // "In the news" slide: each candidate's In the news entry, same standard for all.
+    {
+      eyebrow: "Sa balita · Iisang pamantayan para sa bawat kandidato",
+      title: "Sa balita",
+      question: "Ipinapakita kapag ang mga ulat ng balita tungkol sa isang kandidato ay umabot sa pamantayan ng gabay na ito, na ipinaliwanag sa bahaging naghahambing sa mga kandidato sa ibaba. Iisang pamantayan ang ginagamit para sa tatlo.",
+      candidateField: 'inTheNews',
+      note: "Nakalista ang buong mga pinagmulan sa ibaba ng pahinang ito.",
+    },
     {
       title: 'Paano bumoto',
       bullets: [
@@ -170,7 +179,7 @@ const tl = {
 
   candidatesSection: {
     heading: 'Ang mga kandidato nang magkakatabi',
-    intro: "Tungkol sa bahaging ito: Inilalarawan ang tatlong kandidato sa parehong format, batay sa mga ulat ng balita, mga website ng kampanya at isang questionnaire ng Community Impact na sinagutan nilang lahat [5], at nakaayos ayon sa pagkakasunod-sunod sa balota ng Texas [3]. May tala na “Sa balita” kapag ang mga pahayag o kilos ng isang kandidato sa kampanya ay iniulat ng hindi bababa sa dalawang kilalang news organization at binatikos ng iba pa bukod sa kanyang mga katunggali sa pulitika; kasama rito ang tugon ng kandidato. Hindi nag-eendorso ng mga kandidato ang Tinig ng Filipino Amerikano.",
+    intro: "Tungkol sa bahaging ito: Inilalarawan ang tatlong kandidato sa parehong format, batay sa mga ulat ng balita, mga website ng kampanya at isang questionnaire ng Community Impact na sinagutan nilang lahat [5], at nakaayos ayon sa pagkakasunod-sunod sa balota ng Texas [3]. May tala na “Sa balita” kapag ang mga pahayag o kilos ng isang kandidato sa kampanya ay iniulat ng hindi bababa sa dalawang kilalang news organization at binatikos ng iba pa bukod sa kanyang mga katunggali sa pulitika, o kapag ang sariling pahayag ng isang kandidato tungkol sa mga tao batay sa lahi, etnisidad, relihiyon o bansang pinagmulan ay iniulat ng hindi bababa sa dalawang kilalang news organization. Sinisipi nang eksakto ang mga pahayag, kasama ang tugon ng kandidato o ang tala na walang naiulat na tugon. Binago ang pamantayang ito noong Okt. 27. Hindi nag-eendorso ng mga kandidato ang Tinig ng Filipino Amerikano.",
     rows: [
       { key: 'work', label: 'Karanasan sa trabaho' },
       { key: 'office', label: 'Pampublikong posisyon o posisyon sa partido' },
@@ -202,7 +211,7 @@ const tl = {
         renewables: 'Sumusuporta sa renewables kung kaya nitong tumayo sa ekonomiya nang walang insentibo mula sa buwis [5]',
       },
       background: 'Lumaki si French sa Midland [8], kung saan may negosyo sa langis ang kanyang pamilya [6]. Pumasok siya sa industriya ng enerhiya noong 1994 at nagtrabaho bilang energy trader sa loob ng isang dekada, at sinasabi niyang nagmay-ari at nagpatakbo siya ng mga negosyong pangseguridad sa Middle East [8]. Siya ay dating chair ng Tarrant County Republican Party [6]. Nakuha niya ang nominasyon ng Republican nang talunin niya ang nanunungkulang Commissioner na si Jim Wright sa runoff noong Mayo [6].',
-      inTheNews: 'Noong Set. 13, nag-post si French ng larawan ng mga estudyante ng University of Texas sa stands ng isang laro ng football, at isinulat niya kalaunan na inuuna ng unibersidad ang "mga dayuhan kaysa sa mga Texan"; binatikos ng mga lider ng Republican, kabilang sina Sen. John Cornyn at Texas House Speaker Dustin Burrows, ang post bilang rasista [7a][25]. Kalaunan, sinabi ng dalawang estudyante sa larawan sa The Dallas Morning News na sila ay mga mamamayan ng U.S. [26]. Ipinagtanggol ni French ang post, at sinabing, "ang mas malaking usapan ay, magkakaroon ba tayo ng mga patakarang inuuna ang mga Amerikano – o magkakaroon ba tayo ng mga patakarang inuuna ang mga dayuhan?" [7a]',
+      inTheNews: "Noong Set. 13, nag-post si French ng larawan ng mga estudyante ng University of Texas na nagchi-cheer sa isang laro ng football, mga estudyanteng inilarawan ng Texas Tribune at NBC News na may lahing South Asian, at isinulat na “ang problema ay malinaw na mas malala kaysa sa inaakala ng sinuman,” at kalaunan na inuuna ng unibersidad ang “mga dayuhan kaysa sa mga Texan.” Binatikos ng mga lider ng Republican, kabilang sina Sen. John Cornyn at Texas House Speaker Dustin Burrows, ang post bilang rasista [7a][25], at sinabi ni state Rep. Angie Chen Button (R-Garland), isang imigrante mula sa Taiwan, na hindi siya boboto sa kanya [26]. Sinabi ng mga estudyante sa larawan sa mga reporter na sila ay mga mamamayan ng U.S.; sinabi ng isa sa Texas Tribune, “Kapag tinitingnan ko ang larawang iyon, wala akong nakikitang problema” [26][31]. Tumugon si French, “Hindi ito tungkol sa lahi, ito ay tungkol sa patakaran” [32]. Bago nito, noong Hulyo 2026, nag-post si French na “panahon na para hulihin ang lahat ng Chinese at palayasin sila!” [33][34] Sa CPAC noong Marso 2026, sinabi niyang “ang problema talaga ay ang Islam” at nanawagan sa mga Muslim na “umuwi na” [35][36]. Noong Agosto 2025, nanawagan siya sa mga pederal na opisyal na “tanggalan ng pagkamamamayan at ipatapon” si state Rep. Salman Bhojani, na ipinanganak sa Pakistan [33][37], at noong Hunyo 2025 ay nag-post siya ng poll na nagtatanong ng “Sino ang mas malaking banta sa Amerika?” na may mga opsyong “Mga Hudyo” at “Mga Muslim” [37][38]. Binura ni French ang poll at sinabing, “Pinagsisisihan kong i-post ito” [38]; walang naiulat na tugon niya sa iba pang mga post [33][34].",
       inWords: 'Sinasabi ni French na ang kanyang mga prayoridad ay bawasan ang kawalang-kahusayan sa administrasyon at sobrang lawak na regulasyon para bumaba ang gastos sa enerhiya, protektahan ang mga may-ari ng lupa, at selyuhan ang mas maraming abandonadong balon [5]. Sinasabi ng kanyang kampanya na nangako siyang "wakasan ang DEI, ang labis na regulasyon, at ang impluwensya ng radikal na Islam at ng CCP sa langis ng Texas" [8], at ipatupad ang pagbabawal ng Texas Legislature sa pagmamay-ari ng lupa ng mga dayuhang itinuturing na kalaban (hostile foreign) [8]. Sinasabi niyang nagbibigay ang Komisyon ng mahigit $1 milyon kada taon sa mga kontratang batay sa pamantayan ng diversity, equity at inclusion, at nais niyang itigil ito [6]. Tinatawag niya ang paggamit ng tubig na pinakamalaking hamon na haharapin ng Texas sa susunod na limang taon [5].',
     },
     rosenthal: {
