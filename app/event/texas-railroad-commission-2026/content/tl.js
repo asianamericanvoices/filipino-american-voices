@@ -83,6 +83,14 @@ const tl = {
       ],
       note: 'Mga paglalarawan sa kandidato, hinango mula sa Q&A ng Community Impact, Ago. 25, 2026 [5][12a] · Isinalin ng Tinig ng Filipino Amerikano',
     },
+    // "In the news" slide: each candidate's In the news entry, same standard for all.
+    {
+      eyebrow: "Sa balita · Iisang pamantayan para sa bawat kandidato",
+      title: "Sa balita",
+      question: "Ipinapakita kapag ang mga ulat ng balita tungkol sa isang kandidato ay umabot sa pamantayan ng gabay na ito, na ipinaliwanag sa bahaging naghahambing sa mga kandidato sa ibaba. Iisang pamantayan ang ginagamit para sa tatlo.",
+      candidateField: 'inTheNews',
+      note: "Nakalista ang buong mga pinagmulan sa ibaba ng pahinang ito.",
+    },
     // Slides 2-5: buong sagot ng bawat kandidato sa iisang tanong ng Community Impact [5],
     // isinalin ng AAVM. Ballot order.
     {
@@ -132,14 +140,6 @@ const tl = {
         'Maaaring maging mahusay ang renewable energy, ngunit kailangan itong makipagkumpitensya sa malayang merkado laban sa fossil fuels. Hindi dapat paboran ng ating gobyerno at mga regulator ang isang uri kaysa sa iba.',
       ],
       note: 'Mga sagot ng mga kandidato sa iisang questionnaire ng Community Impact, Ago. 25, 2026 [5] · Isinalin ng Tinig ng Filipino Amerikano',
-    },
-    // "In the news" slide: each candidate's In the news entry, same standard for all.
-    {
-      eyebrow: "Sa balita · Iisang pamantayan para sa bawat kandidato",
-      title: "Sa balita",
-      question: "Ipinapakita kapag ang mga ulat ng balita tungkol sa isang kandidato ay umabot sa pamantayan ng gabay na ito, na ipinaliwanag sa bahaging naghahambing sa mga kandidato sa ibaba. Iisang pamantayan ang ginagamit para sa tatlo.",
-      candidateField: 'inTheNews',
-      note: "Nakalista ang buong mga pinagmulan sa ibaba ng pahinang ito.",
     },
     {
       title: 'Paano bumoto',
